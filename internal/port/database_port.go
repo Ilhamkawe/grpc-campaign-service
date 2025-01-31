@@ -1,0 +1,42 @@
+package port
+
+import (
+	db "github.com/Ilhamkawe/grpc-campaign-service/internal/adapter/database"
+)
+
+type CampaignDatabasePort interface {
+	Rewards(id int) ([]db.CampaignReward, error)
+	Limit(num int) ([]db.Campaign, error)
+	Find(campaignName string, campaignCattegory string) ([]db.Campaign, error)
+	FindAll() ([]db.Campaign, error)
+	FindAllApproved() ([]db.Campaign, error)
+	FindByStatus(status string) ([]db.Campaign, error)
+	FindByUserID(userID int) ([]db.Campaign, error)
+	FindByID(ID int) (db.Campaign, error)
+	FindUserCampaign(ID int) (db.Campaign, error)
+	FindByName(campaignName string) ([]db.Campaign, error)
+	FindByCattegory(campaignCattegory string) ([]db.Campaign, error)
+	Save(campaign db.Campaign) (db.Campaign, error)
+	Update(campaign db.Campaign) (db.Campaign, error)
+	MarkAllImagesAsNonPrimary(campaignID int) (bool, error)
+	CreateImage(campaignImage db.CampaignImage) (db.CampaignImage, error)
+	CreateReward(campaignReward db.CampaignReward) (db.CampaignReward, error)
+	DeleteReward(rewardID int) (bool, error)
+	DeleteImage(imageID int) (bool, error)
+	UpdateAttachment(campaign db.Campaign) (db.Campaign, error)
+	FindAllWoStatus() ([]db.Campaign, error)
+	CreateActivity(campaignActivity db.CampaignActivity) (db.CampaignActivity, error)
+	UpdateActivity(campaignActivity db.CampaignActivity) (db.CampaignActivity, error)
+	DeleteActivity(activityID int) (bool, error)
+	FindActivity(activityID int) (db.CampaignActivity, error)
+	FindAllActivityByCampaignID(campaignID int) ([]db.CampaignActivity, error)
+	Paginate(limit int, offset int) ([]db.Campaign, error)
+	isCollectAbleByDate() (bool, error)
+	isCollectAbleByAmount() (bool, error)
+	CreateCattegory(cattegory db.Cattegory) (db.Cattegory, error)
+	DeleteCattegory(id int) (bool, error)
+	FindAllCattegory() ([]db.Cattegory, error)
+	FindPaginate(campaignName string, campaignCattegory string, limit int, offset int) ([]db.Campaign, error)
+	FindByNamePaginate(campaignName string, limit int, offset int) ([]db.Campaign, error)
+	FindByCattegoryPaginate(campaignCattegory string, limit int, offset int) ([]db.Campaign, error)
+}
