@@ -1,4 +1,4 @@
-package port
+package campaign
 
 import (
 	db "github.com/Ilhamkawe/grpc-campaign-service/internal/adapter/database"

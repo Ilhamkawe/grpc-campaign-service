@@ -1,13 +1,14 @@
-package database
+package campaign
 
 import (
-	"github.com/leekchan/accounting"
 	"os/user"
 	"time"
+
+	"github.com/leekchan/accounting"
 )
 
 type Campaign struct {
-	ID               int
+	ID               int `gorm:"primaryKey"`
 	UserID           int
 	Name             string
 	ShortDescription string

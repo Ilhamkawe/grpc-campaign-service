@@ -1,10 +1,10 @@
-package port
+package campaign
 
 import (
 	db "github.com/Ilhamkawe/grpc-campaign-service/internal/adapter/database"
 )
 
-type CampaignDatabasePort interface {
+type CampaignRepositoryPort interface {
 	Rewards(id int) ([]db.CampaignReward, error)
 	Limit(num int) ([]db.Campaign, error)
 	Find(campaignName string, campaignCattegory string) ([]db.Campaign, error)

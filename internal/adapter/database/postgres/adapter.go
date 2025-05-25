@@ -1,5 +1,13 @@
 package database
 
+import (
+	"database/sql"
+	"fmt"
+
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+)
+
 type DatabaseAdapter struct {
 	db *gorm.DB
 }
